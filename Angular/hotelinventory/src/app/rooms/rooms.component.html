@@ -5,4 +5,13 @@ Number of rooms available:
 <div [innerText]="numberOfRooms"></div>
 </div>
 
+{{rooms?.availableRooms ?? "No rooms"}}
+<div *ngIf="rooms?.availableRooms">
+  {{roomList | json}}
+</div>
+
+<hinv-rooms-list [rooms]="roomList" (selectedRoom)="selectedRoom($event)"></hinv-rooms-list>
+<div *ngIf="selecteRoom">
+  {{selecteRoom | json}}
+</div>
 <button (click)="toggle()">Toggle</button>
