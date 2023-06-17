@@ -10,7 +10,11 @@ Number of rooms available:
   {{roomList | json}}
 </div>
 
-<hinv-rooms-list [rooms]="roomList" (selectedRoom)="selectedRoom($event)"></hinv-rooms-list>
+<div >
+  <button #roomBtn (click)="addRoom()">Add Room</button>
+</div>
+
+<hinv-rooms-list [title]="title" [rooms]="roomList" (selectedRoom)="selectedRoom($event)" ></hinv-rooms-list>
 <div *ngIf="selecteRoom">
   {{selecteRoom | json}}
 </div>
