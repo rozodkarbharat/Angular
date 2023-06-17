@@ -1,4 +1,11 @@
-import { AfterViewInit, Component, ElementRef, OnChanges, SimpleChange, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnChanges,
+  SimpleChange,
+  ViewChild,
+} from '@angular/core';
 import { Room, RoomList } from './rooms';
 import { RoomsListComponent } from './rooms-list/rooms-list.component';
 import { Element } from '@angular/compiler';
@@ -8,15 +15,15 @@ import { Element } from '@angular/compiler';
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.css'],
 })
-export class RoomsComponent implements AfterViewInit{
+export class RoomsComponent implements AfterViewInit {
   hotelName = 'Taj hotel';
   numberOfRooms = 10;
 
-// @ViewChild("rooms-list")child:RoomsListComponent
-@ViewChild("roomBtn")btn!:ElementRef<any>
+  // @ViewChild("rooms-list")child:RoomsListComponent
+  @ViewChild('roomBtn') btn!: ElementRef<any>;
 
-  selecteRoom!:RoomList
-  title="Room List"
+  selecteRoom!: RoomList;
+  title = 'Room List';
   hideRooms = false;
   rooms: Room = {
     totalRooms: 15,
@@ -26,7 +33,7 @@ export class RoomsComponent implements AfterViewInit{
 
   roomList: RoomList[] = [
     {
-      roomNumber:1,
+      roomNumber: 1,
       roomtype: 'delux Room',
       amenities: 'Air conditioner',
       photos:
@@ -34,10 +41,10 @@ export class RoomsComponent implements AfterViewInit{
       price: 500,
       checkInDate: new Date('11-Nov-2021'),
       checkOutDate: new Date('11-Nov-2021'),
-      rating:4.5
+      rating: 4.5,
     },
     {
-      roomNumber:2,
+      roomNumber: 2,
       roomtype: 'delux Room',
       amenities: 'Air conditioner, free wifi',
       photos:
@@ -45,10 +52,10 @@ export class RoomsComponent implements AfterViewInit{
       price: 1000,
       checkInDate: new Date('11-Nov-2021'),
       checkOutDate: new Date('11-Nov-2021'),
-      rating:3.0611
+      rating: 3.0611,
     },
     {
-      roomNumber:3,
+      roomNumber: 3,
       roomtype: 'Private suite',
       amenities: 'Air conditioner, free wifi water',
       photos:
@@ -56,24 +63,23 @@ export class RoomsComponent implements AfterViewInit{
       price: 1500,
       checkInDate: new Date('11-Nov-2021'),
       checkOutDate: new Date('11-Nov-2021'),
-      rating:2.8
+      rating: 2.8,
     },
   ];
 
   toggle() {
-    console.log(this.title)
+    console.log(this.title);
     this.hideRooms = !this.hideRooms;
-    this.title= "Rooms List"
+    this.title = 'Rooms List';
   }
 
-  selectedRoom(room:RoomList){
-    console.log(room)
-    this.selecteRoom=room
+  selectedRoom(room: RoomList) {
+    console.log(room);
+    this.selecteRoom = room;
   }
-  addRoom(){
-    const room:RoomList={
-
-      roomNumber:4,
+  addRoom() {
+    const room: RoomList = {
+      roomNumber: 4,
       roomtype: 'Private suite',
       amenities: 'Air conditioner, free wifi water',
       photos:
@@ -81,15 +87,12 @@ export class RoomsComponent implements AfterViewInit{
       price: 1500,
       checkInDate: new Date('11-Nov-2021'),
       checkOutDate: new Date('11-Nov-2021'),
-      rating:3.5
-    }
-    this.roomList.push(room)
-
+      rating: 3.5,
+    };
+    this.roomList.push(room);
   }
 
-  ngAfterViewInit(){
-    console.log(this.btn.nativeElement.style.backgroundColor="green")
+  ngAfterViewInit() {
+    console.log((this.btn.nativeElement.style.backgroundColor = 'green'));
   }
-
-
 }
