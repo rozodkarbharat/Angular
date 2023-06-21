@@ -3,19 +3,22 @@ import {
   Component,
   ElementRef,
   OnChanges,
+  OnInit,
   SimpleChange,
   ViewChild,
 } from '@angular/core';
 import { Room, RoomList } from './rooms';
 import { RoomsListComponent } from './rooms-list/rooms-list.component';
 import { Element } from '@angular/compiler';
+import { RoomsService } from './Services/rooms.service';
+import { DataserviceService } from './Services/dataservice.service';
 
 @Component({
   selector: 'hinv-rooms',
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.css'],
 })
-export class RoomsComponent implements AfterViewInit {
+export class RoomsComponent implements AfterViewInit , OnInit{
   hotelName = 'Taj hotel';
   numberOfRooms = 10;
 
@@ -30,42 +33,18 @@ export class RoomsComponent implements AfterViewInit {
     bookedRooms: 5,
     availableRooms: 10,
   };
+ roomList:RoomList[]=[]
 
-  roomList: RoomList[] = [
-    {
-      roomNumber: 1,
-      roomtype: 'delux Room',
-      amenities: 'Air conditioner',
-      photos:
-        'https://media.istockphoto.com/id/1369575590/photo/living-room-inderior-with-arch-windows-furnished-with-modern-sofa-and-dining-table-3d-render.jpg?s=612x612&w=is&k=20&c=EAPH4xFM6DtFyIvFXM1ALdzG2WlEsJ_Xcrh68AB3an8=',
-      price: 500,
-      checkInDate: new Date('11-Nov-2021'),
-      checkOutDate: new Date('11-Nov-2021'),
-      rating: 4.5,
-    },
-    {
-      roomNumber: 2,
-      roomtype: 'delux Room',
-      amenities: 'Air conditioner, free wifi',
-      photos:
-        'https://media.istockphoto.com/id/1369575590/photo/living-room-inderior-with-arch-windows-furnished-with-modern-sofa-and-dining-table-3d-render.jpg?s=612x612&w=is&k=20&c=EAPH4xFM6DtFyIvFXM1ALdzG2WlEsJ_Xcrh68AB3an8=',
-      price: 1000,
-      checkInDate: new Date('11-Nov-2021'),
-      checkOutDate: new Date('11-Nov-2021'),
-      rating: 3.0611,
-    },
-    {
-      roomNumber: 3,
-      roomtype: 'Private suite',
-      amenities: 'Air conditioner, free wifi water',
-      photos:
-        'https://media.istockphoto.com/id/1369575590/photo/living-room-inderior-with-arch-windows-furnished-with-modern-sofa-and-dining-table-3d-render.jpg?s=612x612&w=is&k=20&c=EAPH4xFM6DtFyIvFXM1ALdzG2WlEsJ_Xcrh68AB3an8=',
-      price: 1500,
-      checkInDate: new Date('11-Nov-2021'),
-      checkOutDate: new Date('11-Nov-2021'),
-      rating: 2.8,
-    },
-  ];
+constructor(private roomsService:RoomsService, private dataserviceService:DataserviceService){
+
+}
+
+ngOnInit(): void {
+    this.roomList=this.roomsService.getRooms()
+    this.dataserviceService.getData().subscribe((data)=>{
+      console.log(data,'Api Fetched')
+    })
+}
 
   toggle() {
     console.log(this.title);
@@ -89,7 +68,7 @@ export class RoomsComponent implements AfterViewInit {
       checkOutDate: new Date('11-Nov-2021'),
       rating: 3.5,
     };
-    this.roomList.push(room);
+    this.roomList.push(room)
   }
 
   ngAfterViewInit() {
