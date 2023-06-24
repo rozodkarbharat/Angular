@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
 
 @Component({
   selector: 'hinv-rooms-booking',
@@ -6,5 +10,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./rooms-booking.component.css']
 })
 export class RoomsBookingComponent {
+
+  id:number=0
+  constructor(private router:ActivatedRoute){}
+
+  id$ =this.router.paramMap.pipe(map((params)=>params.get('id')))
+
+
+ngOnInit(): void{
+
+
+}
 
 }
