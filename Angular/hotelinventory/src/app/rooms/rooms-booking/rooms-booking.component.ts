@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
 
 @Component({
   selector: 'hinv-rooms-booking',
@@ -10,7 +8,6 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./rooms-booking.component.css']
 })
 export class RoomsBookingComponent {
-
   id:number=0
   constructor(private router:ActivatedRoute){}
 
@@ -21,5 +18,4 @@ ngOnInit(): void{
 
 
 }
-
 }

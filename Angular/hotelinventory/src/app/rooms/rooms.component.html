@@ -5,7 +5,7 @@
   <div [innerText]="numberOfRooms"></div>
 </div>
 
-{{ rooms?.availableRooms ?? "No rooms" }}
+{{ rooms.availableRooms ?? "No rooms" }}
 <div *ngIf="rooms?.availableRooms">
   {{ roomList | json }}
 </div>
@@ -23,3 +23,5 @@
   {{ selecteRoom | json }}
 </div>
 <button (click)="toggle()">Toggle</button>
+
+<router-outlet></router-outlet>

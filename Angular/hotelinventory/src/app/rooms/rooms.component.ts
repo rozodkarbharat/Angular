@@ -12,6 +12,7 @@ import { RoomsListComponent } from './rooms-list/rooms-list.component';
 import { Element } from '@angular/compiler';
 import { RoomsService } from './Services/rooms.service';
 import { DataserviceService } from './Services/dataservice.service';
+import { ConfigService } from '../services/config.service';
 
 @Component({
   selector: 'hinv-rooms',
@@ -35,7 +36,7 @@ export class RoomsComponent implements AfterViewInit , OnInit{
   };
  roomList:RoomList[]=[]
 
-constructor(private roomsService:RoomsService, private dataserviceService:DataserviceService){
+constructor(private roomsService:RoomsService, private dataserviceService:DataserviceService, private confiService:ConfigService){
 
 }
 

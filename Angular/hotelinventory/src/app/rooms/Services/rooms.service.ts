@@ -44,6 +44,13 @@ export class RoomsService {
     },
   ];
 
+  addRoom(room:RoomList) {
+    this.roomList=[...this.roomList,room]
+    return new Promise((resolve)=>{
+      'hello'
+    })
+  }
+
   getRooms(){
   return this.roomList
   }

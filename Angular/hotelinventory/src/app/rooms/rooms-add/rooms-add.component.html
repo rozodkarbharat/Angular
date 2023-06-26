@@ -1,1 +1,91 @@
-<p>rooms-add works!</p>
+{{ room | json }}
+<div *ngIf="successMessagee !=''" class="alert alert-success">
+  {{ successMessagee }}
+</div>
+<form #roomForm="ngForm" (ngSubmit)="AddRoom(roomForm)">
+  <div class="form-group">
+    <input
+      required="true"
+      class="form-control"
+      type="text"
+      name="roomType"
+      placeholder="Room type"
+      [(ngModel)]="room.roomtype"
+    />
+  </div>
+
+  <div class="form-group">
+    <input
+      required="true"
+      class="form-control"
+      type="text"
+      name="amenities"
+      placeholder="Amenities"
+      [(ngModel)]="room.amenities"
+      #roomamenities='ngModel'
+      minlength="5"
+      maxlength="20"
+    />
+  </div>
+  <div class="alert alert-danger" *ngIf="roomamenities.errors?.['minlength']">
+   Amenities should be min 5 chars!
+  </div>
+
+  <div class="form-group">
+    <input
+      required="true"
+      class="form-control"
+      type="number"
+      name="price"
+      placeholder="Price"
+      [(ngModel)]="room.price"
+    />
+  </div>
+
+  <div class="form-group">
+    <input
+      required="true"
+      class="form-control"
+      type="text"
+      name="photos"
+      placeholder="Photos"
+      [(ngModel)]="room.photos"
+    />
+  </div>
+  <div class="form-group">
+    <input
+      required="true"
+      class="form-control"
+      type="datetime"
+      name="checkintime"
+      placeholder="check-in-time"
+      [(ngModel)]="room.checkInDate"
+    />
+  </div>
+  <div class="form-group">
+    <input
+      required="true"
+      class="form-control"
+      type="text"
+      name="checkouttime"
+      placeholder="Check-Out-time"
+      [(ngModel)]="room.checkOutDate"
+    />
+  </div>
+  <div class="form-group">
+    <input
+      required="true"
+      class="form-control"
+      type="number"
+      name="rating"
+      placeholder="Rating"
+      [(ngModel)]="room.rating"
+      min="1"
+      max="5"
+    />
+  </div>
+
+  <div>
+    <button [disabled]="roomForm.invalid" class="btn btn-primary" type="submit">Submit</button>
+  </div>
+</form>
