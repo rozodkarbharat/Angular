@@ -4,26 +4,42 @@ import { EmployeeComponent } from './employee/employee.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 
 import { LoginComponent } from './login/login.component';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   {
     path: 'employee',
     component: EmployeeComponent,
+    // canActivate: [LoginGuard],
   },
 
   {
-    path:'login', component:LoginComponent
+    path: 'login',
+    component: LoginComponent,
   },
   {
-    path:'rooms',loadChildren:()=>import('./rooms/rooms.module').then((m)=> m.RoomsModule)
+    path: 'rooms',
+    loadChildren: () =>
+      import('./rooms/rooms.module').then((m) => m.RoomsModule),
+    // canActivate: [LoginGuard],
   },
   {
     path: '',
     redirectTo: '/login',
     pathMatch: 'full',
   },
-  { path: 'booking', loadChildren: () => import('./booking/booking.module').then(m => m.BookingModule) },
-  { path: 'booking', loadChildren: () => import('./booking/booking.module').then(m => m.BookingModule) },
+  {
+    path: 'booking',
+    loadChildren: () =>
+      import('./booking/booking.module').then((m) => m.BookingModule),
+    // canActivate: [LoginGuard],
+  },
+  {
+    path: 'booking',
+    loadChildren: () =>
+      import('./booking/booking.module').then((m) => m.BookingModule),
+    // canActivate: [LoginGuard],
+  },
   {
     path: '**',
     component: NotfoundComponent,
