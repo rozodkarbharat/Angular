@@ -29,16 +29,16 @@ export class BookingComponent implements OnInit {
 
 export class Booking{
 
-  roomId: string;
-  guestEmail: string;
-  guestName: string;
-  checkOutDate:Date;
-  checkInDate:Date;
-  mobileNumber:string;
-  guesAdress:string;
-  bookingAmount:number;
-  bookingStatus:string;
-  bookingDate:Date;
-  guestList:Guest[]
+  // roomId: string;
+  // guestEmail: string;
+  // guestName: string;
+  // checkOutDate:Date;
+  // checkInDate:Date;
+  // mobileNumber:string;
+  // guesAdress:string;
+  // bookingAmount:number;
+  // bookingStatus:string;
+  // bookingDate:Date;
+  // guestList:Guest[]
 
  }
