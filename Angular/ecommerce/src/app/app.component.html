@@ -4,10 +4,9 @@
     class="navbar navbar-expand-lg navbar-light bg-white border-bottom border-top"
   >
     <div class="container">
-      <a class="navbar-brand fs-2 fw-bold" href="#"
-        ><i class="fa fa-cart-shopping fs-2" style="color: #f54242"></i
-        ><span class="textBlur">Shopwise</span></a
-      >
+      <div class="navbar-brand fs-2 fw-bold"(click)="goToHome()" style="cursor: pointer;"
+        ><i class="fa fa-cart-shopping fs-2" style="color: #f54242;"></i
+        ><span class="textBlur">Shopwise</span></div>
       <button
         class="navbar-toggler"
         type="button"
@@ -148,7 +147,7 @@
               <div class="CartContainer">
                 <div class="row">
                   <div class="col-6">Your Cart</div>
-                  <div class="col-6 text-end text-danger">Remove All</div>
+                  <div class="col-6 text-end text-danger" (click)="clearCart()">Remove All</div>
                 </div>
                 <div class="row pt-1" *ngFor="let cart of CartItems">
                   <div class="col-4">

@@ -5,10 +5,7 @@ import { CartComponent } from './Pages/cart/cart.component';
 import { SaleComponent } from './Pages/sale/sale.component';
 
 const routes: Routes = [
-  {
-    path: '**',
-    component: HomeComponent,
-  },
+
   {
     path: 'products',
     component: HomeComponent,
@@ -20,6 +17,10 @@ const routes: Routes = [
   {
     path: 'sale',
     component: SaleComponent,
+  },
+  {
+    path: '**',
+    component: HomeComponent,
   },
 ];
 

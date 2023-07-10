@@ -6,7 +6,8 @@ import { Observable, Subject, isObservable } from 'rxjs';
   providedIn: 'root',
 })
 export class ProductService {
-  public cartAddedSubject = new Subject<boolean>();
+
+  public cartAddedSubject=new Subject<boolean>();
   constructor(private http: HttpClient) {}
   getAllProducts(): Observable<any[]> {
     return this.http.get<any[]>('https://fakestoreapi.com/products');
@@ -35,18 +36,23 @@ export class ProductService {
     }
   }
 
-  getCartItems() {
+  getCartItems(){
     const cartData = localStorage.getItem('cartData');
-    let parsedData = null;
+  let parsedData = null;
 
-    if (cartData) {
-      try {
-        parsedData = JSON.parse(cartData);
-      } catch (error) {
-        console.error('Error parsing cart data:', error);
-      }
+  if (cartData) {
+    try {
+      parsedData = JSON.parse(cartData);
+    } catch (error) {
+      console.error('Error parsing cart data:', error);
     }
-
-    return parsedData;
   }
+
+  return parsedData || [];
+  }
+  makeSale(){
+    localStorage.removeItem('cartData');
+    return []
+  }
+
 }

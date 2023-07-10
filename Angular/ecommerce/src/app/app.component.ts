@@ -10,10 +10,11 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   title = 'ecommerce';
   CartItems: any[] = [];
-  subTotal:number = 0;
-  constructor(private productService: ProductService,private router: Router) {
+  subTotal: number = 0;
+  constructor(private productService: ProductService, private router: Router) {
+    localStorage.setItem('cartData', JSON.stringify([]));
     this.productService.cartAddedSubject.subscribe((res) => {
-      this.loadCart()
+      this.loadCart();
     });
   }
 
@@ -25,12 +26,20 @@ export class AppComponent implements OnInit {
     let data = this.productService.getCartItems();
 
     this.CartItems = [...data];
-    this.CartItems.forEach((item, index) =>{this.subTotal+=item.price})
-    console.log(this.subTotal,'subtotal')
+    this.CartItems.forEach((item, index) => {
+      this.subTotal += item.price;
+    });
   }
 
-  redirectToSale(){
-    this.router.navigateByUrl('sale');
+  redirectToSale() {
+    this.router.navigateByUrl('/sale');
   }
-
+  goToHome() {
+    this.router.navigateByUrl('/');
+  }
+  clearCart() {
+    localStorage.removeItem('cartData');
+    this.CartItems = [];
+    this.subTotal = 0;
+  }
 }
